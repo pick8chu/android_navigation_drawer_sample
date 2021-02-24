@@ -1,10 +1,9 @@
 package com.example.myapplication
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.view.Gravity
 import android.view.MenuItem
 import androidx.appcompat.app.ActionBarDrawerToggle
+import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
 import androidx.core.view.GravityCompat
 import androidx.drawerlayout.widget.DrawerLayout
@@ -36,12 +35,12 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         navView.setNavigationItemSelectedListener(this)
 
         buttonAdd.setOnClickListener {
-            var mMenu = navView.menu
-            var menuSize = mMenu.size()
+            val mMenu = navView.menu
+            val menuSize = mMenu.size()
             mMenu.add(1, menuSize, menuSize, menuEditText.text.toString())
             mMenu.getItem(menuSize).setIcon(R.drawable.ic_launcher_foreground)
 
-            drawerLayout.openDrawer(Gravity.LEFT)
+            drawerLayout.openDrawer(GravityCompat.START)
             longToast(menuEditText.text.toString() + "is added on the " + menuSize + "th order")
 
             mMenu.getItem(menuSize).setOnMenuItemClickListener {
@@ -53,10 +52,10 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         }
 
         buttonRemove.setOnClickListener {
-            var mMenu = navView.menu
+            val mMenu = navView.menu
             mMenu.removeItem(menuIdText.text.toString().toInt())
 
-            drawerLayout.openDrawer(Gravity.LEFT)
+            drawerLayout.openDrawer(GravityCompat.START)
             longToast(menuIdText.toString() + "th menu is deleted")
         }
     }
